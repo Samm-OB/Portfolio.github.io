@@ -1,0 +1,209 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Samuel Ofoegbu | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
+    header, section, footer {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    header {
+      text-align: center;
+      background-color: #ffffff;
+      border-bottom: 1px solid #ccc;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      color: #222;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #666;
+    }
+    nav {
+      text-align: center;
+      margin-top: 20px;
+    }
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #0077cc;
+      font-weight: 500;
+    }
+    section {
+      background-color: #fff;
+      margin-top: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.05);
+    }
+    section h2 {
+      font-size: 1.8rem;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    .project {
+      margin-bottom: 20px;
+    }
+    .social {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .social a {
+      margin: 0 10px;
+      font-size: 1.5rem;
+      color: #0077cc;
+      text-decoration: none;
+    }
+    .lnks a {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #0077cc;
+      color: #fff;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+    .lnks a:hover {
+      background-color: #005fa3;
+    }
+    #comingSoonPage {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.85);
+      color: white;
+      font-size: 2rem;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 999;
+    }
+    #comingSoonPage button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #comingSoonPage button:hover {
+      background-color: #005fa3;
+    }
+    .contact-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .map-container, .contact-info {
+      flex: 1 1 45%;
+      min-width: 300px;
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
+      border-radius: 8px;
+    }
+    .contact-info {
+      background: linear-gradient(135deg, #0077cc, #00c2ff);
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .contact-info h3 {
+      margin-bottom: 15px;
+    }
+    .contact-info p {
+      margin: 10px 0;
+    }
+    .contact-info i {
+      margin-right: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Samuel Ofoegbu</h1>
+    <p>Data Scientist | AI/ML Engineer | Cybersecurity Learner</p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#assistant">AI Assistant</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="social">
+      <a target="_blank" href="https://www.linkedin.com/" aria-label="LinkedIn"><span class="fab fa-linkedin"></span></a>
+      <a target="_blank" href="https://x.com/say_s1m" aria-label="Twitter"><span class="fab fa-twitter"></span></a>
+      <a target="_blank" href="https://github.com/" aria-label="GitHub"><span class="fab fa-github"></span></a>
+    </div>
+
+    <div class="lnks">
+      <a href="https://ryancv.bslthemes.com/dataops/wp-content/uploads/sites/20/2022/07/Sammy-Resume.pdf" target="_blank">Download CV</a>
+      <a href="#contact">Contact Me</a>
+      <h3>RAG Knowledge Assistant</h3>
+      <p>A Retrieval-Augmented Generation (RAG) agent that answers questions with memory and document-grounded responses. Built with LlamaIndex, OpenAI tools, and streaming chat features.</p>
+      <p><a onclick="showComingSoon()" style="cursor:pointer; color:#0077cc;">Try the Assistant →</a></p>
+    </div>
+  </header>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-section">
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps?q=Akoka,+Lagos,+Nigeria&output=embed" allowfullscreen></iframe>
+      </div>
+      <div class="contact-info">
+        <h3><i class="fas fa-map-marker-alt"></i> Location</h3>
+        <p>Akoka, Lagos, Nigeria</p>
+        <h3><i class="fas fa-envelope"></i> Email</h3>
+        <p>samuel@example.com</p>
+        <h3><i class="fas fa-phone"></i> Phone</h3>
+        <p>+234 123 456 7890</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Samuel Ofoegbu. All rights reserved.</p>
+  </footer>
+
+  <div id="comingSoonPage">
+    <div>🚧 Coming Soon 🚧</div>
+    <button onclick="hideComingSoon()">Back to Portfolio</button>
+  </div>
+
+  <script>
+    function showComingSoon() {
+      document.getElementById("comingSoonPage").style.display = "flex";
+      window.scrollTo(0, 0);
+    }
+
+    function hideComingSoon() {
+      document.getElementById("comingSoonPage").style.display = "none";
+    }
+  </script>
+</body>
+
+</html> -->
