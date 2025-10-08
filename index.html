@@ -1,281 +1,1046 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css">
-  <title>Samuel Ofoegbu | Portfolio</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
-
-  <!-- Swiper CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
-  <!-- Swiper JS -->
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-  <!-- Local CSS -->
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samuel Ofoegbu | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                            950: '#172554'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'typewriter': 'typewriter 2s steps(11) forwards',
+                        'fadeIn': 'fadeIn 0.5s ease-in forwards',
+                        'slideIn': 'slideIn 0.8s ease-out forwards',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 5px #3b82f6, 0 0 10px #3b82f6, 0 0 15px #3b82f6' },
+                            '100%': { boxShadow: '0 0 10px #3b82f6, 0 0 20px #3b82f6, 0 0 30px #3b82f6' }
+                        },
+                        typewriter: {
+                            '0%': { width: '0' },
+                            '100%': { width: '11ch' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideIn: {
+                            '0%': { transform: 'translateX(-100%)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f1521;
+            color: #e2e8f0;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body.light-mode {
+            background-color: #f1f5f9;
+            color: #334155;
+        }
+        
+        .grid-bg {
+            background-image: 
+                linear-gradient(rgba(30, 64, 175, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(30, 64, 175, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        
+        .light-mode .grid-bg {
+            background-image: 
+                linear-gradient(rgba(30, 64, 175, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(30, 64, 175, 0.03) 1px, transparent 1px);
+        }
+        
+        .neon-border {
+            border: 1px solid rgba(30, 64, 175, 0.3);
+            box-shadow: 0 0 10px rgba(30, 64, 175, 0.2);
+        }
+        
+        .light-mode .neon-border {
+            border: 1px solid rgba(30, 64, 175, 0.2);
+            box-shadow: 0 0 5px rgba(30, 64, 175, 0.1);
+        }
+        
+        .hologram-effect {
+            background: linear-gradient(125deg, rgba(30, 64, 175, 0.1) 0%, rgba(59, 130, 246, 0.1) 50%, rgba(30, 64, 175, 0.1) 100%);
+            backdrop-filter: blur(10px);
+        }
+        
+        .light-mode .hologram-effect {
+            background: linear-gradient(125deg, rgba(30, 64, 175, 0.05) 0%, rgba(59, 130, 246, 0.05) 50%, rgba(30, 64, 175, 0.05) 100%);
+        }
+        
+        .pulse-dot {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px);
+            text-shadow: 0 0 10px currentColor;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #647092, #5071aa, #334787);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .light-mode .gradient-text {
+            background: linear-gradient(90deg, #2c3246, #3b82f6, #1e40af);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* ===== DESKTOP: HORIZONTAL LAYOUT ===== */
+        @media (min-width: 1025px) {
+            body {
+                overflow-x: auto;
+                overflow-y: auto;
+                height: 80vh;
+            }
+            
+            .horizontal-container {
+                display: flex;
+                flex-direction: row;
+                width: max-content;
+                min-height: 80vh;
+                padding: 1rem;
+                gap: 1rem;
+            }
+            
+            .horizontal-section {
+                min-width: 320px;
+                max-width: 800px;
+                height: fit-content;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .tall-rectangle {
+                height: 70%;
+                min-height: 600px;
+            }
+            
+            .square {
+                width: 100%;
+                height: 30%;
+                min-height: 200px;
+            }
+        }
+        
+        /* ===== MOBILE: VERTICAL LAYOUT ===== */
+        @media (max-width: 1024px) {
+            body {
+                overflow-x: hidden;
+                overflow-y: auto;
+                height: auto;
+                min-height: 100vh;
+            }
+            
+            .horizontal-container {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                padding: 1rem;
+                gap: 1rem;
+                height: auto;
+            }
+            
+            .horizontal-section {
+                width: 100%;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .tall-rectangle, .square {
+                height: auto;
+                min-height: auto;
+                margin-bottom: 1rem;
+            }
+        }
+        
+        /* Toggle button */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            background: rgba(23, 34, 71, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+        }
+        
+        .light-mode .theme-toggle {
+            background: rgba(59, 130, 246, 0.8);
+            color: white;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Custom scrollbar for desktop */
+        @media (min-width: 1025px) {
+            ::-webkit-scrollbar {
+                height: 8px;
+            }
+            
+            ::-webkit-scrollbar-track {
+                background: rgba(30, 64, 175, 0.1);
+                border-radius: 10px;
+            }
+            
+            ::-webkit-scrollbar-thumb {
+                background: rgba(49, 85, 144, 0.5);
+                border-radius: 10px;
+            }
+            
+            ::-webkit-scrollbar-thumb:hover {
+                background: rgba(59, 130, 246, 0.7);
+            }
+            
+            .light-mode ::-webkit-scrollbar-track {
+                background: rgba(30, 64, 175, 0.05);
+            }
+            
+            .light-mode ::-webkit-scrollbar-thumb {
+                background: rgba(59, 130, 246, 0.3);
+            }
+            
+            .light-mode ::-webkit-scrollbar-thumb:hover {
+                background: rgba(59, 130, 246, 0.5);
+            }
+        }
+        
+        /* Chatbot styles */
+        .chat-container {
+            height: 300px;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+        .user-message {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            color: white;
+            margin-left: 20%;
+            border-radius: 18px 18px 5px 18px;
+        }
+        .bot-message {
+            background: #1e293b;
+            color: #e2e8f0;
+            margin-right: 20%;
+            border-radius: 18px 18px 18px 5px;
+            border: 1px solid #334155;
+        }
+        .light-mode .bot-message {
+            background: #f8fafc;
+            color: #334155;
+            border: 1px solid #e2e8f0;
+        }
+        .message {
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Glitch effect for profile */
+        .r-glitch {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 1rem;
+        }
+        
+        .r-glitch-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.8;
+        }
+        
+        .r-glitch-item:nth-child(2) {
+            transform: translate(2px, 0);
+            opacity: 0.6;
+        }
+        
+        .r-glitch-item:nth-child(3) {
+            transform: translate(-2px, 0);
+            opacity: 0.6;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            position: relative;
+            background-color: #0f1521;
+            margin: 5% auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+            animation: modalFadeIn 0.3s;
+        }
+        
+        .light-mode .modal-content {
+            background-color: #f1f5f9;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #64748b;
+            transition: color 0.3s;
+        }
+        
+        .close-btn:hover {
+            color: #ef4444;
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .horizontal-container {
+                padding: 0.5rem;
+            }
+            
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+                padding: 15px;
+            }
+            
+            .r-glitch {
+                width: 100px;
+                height: 100px;
+            }
+            
+            h1.text-4xl {
+                font-size: 1.875rem;
+            }
+            
+            .grid.grid-cols-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .horizontal-container {
+                padding: 0.25rem;
+            }
+            
+            .hologram-effect {
+                padding: 1rem;
+            }
+            
+            .modal-content {
+                margin: 5% auto;
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
-<body>
-
-  <header>
-    <div class="r-glitch">
-      <div class="r-glitch-item" style="background-image: url('WhatsApp Image 2025-05-04 at 22.18.35_3cd9941b.jpg');"></div>
-      <div class="r-glitch-item" style="background-image: url('WhatsApp Image 2025-05-04 at 22.18.35_3cd9941b.jpg');"></div>
-      <div class="r-glitch-item" style="background-image: url('WhatsApp Image 2025-05-04 at 22.18.35_3cd9941b.jpg');"></div>
+<body class="grid-bg">
+    <!-- Theme Toggle Button -->
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon" id="themeIcon"></i>
     </div>
 
-    <h1>Samuel Ofoegbu</h1>
-    <button id="toggle-dark-mode" class="dark-toggle-btn" aria-label="Toggle Dark Mode">🌙 Dark Mode</button>
+    <!-- Horizontal Container -->
+    <div class="horizontal-container">
+        <!-- Section 1: Header & Bio -->
+        <div class="horizontal-section">
+            <div class="hologram-effect rounded-2xl p-6 neon-border tall-rectangle mb-4 animate-fadeIn">
+                <div class="r-glitch">
+                    <!-- <div class="r-glitch-item" style="background-color: #131f44;"></div> -->
+                    <div class="r-glitch-item" style="background-image: url('WhatsApp Image 2025-05-04 at 22.18.35_3cd9941b.jpg');"></div>
+                    <!-- <div class="r-glitch-item" style="background-color: #1e3a8a;"></div> -->
+                </div>
+                
+                <header class="mb-6">
+                    <div class="flex justify-between items-center">
+                        <a href="photo1.png"></a>
+                        <div>
+                            <h1 class="text-4xl font-bold gradient-text">Samuel Ofoegbu</h1>
+                            <div class="flex items-center mt-2">
+                                <i class="fas fa-code text-primary-500 mr-2"></i>
+                                <p class="text-primary-500 text-lg">Full-stack Developer, Data Scientist & AI/ML Engineer</p>
+                            </div>
+                        </div>
+                        <div class="pulse-dot w-3 h-3 bg-primary-500 rounded-full"></div>
+                    </div>
+                </header>
+                
+                <div class="mt-6">
+                    <p class="text-lg leading-relaxed">
+                        I’m a Pure Mathematics graduate with a 
+                        strong passion for Data Science, Artificial 
+                        Intelligence, Machine Learning, and Finance. 
+                        My work bridges analytical thinking and 
+                        creativity transforming data into practical, 
+                        intelligent solutions.
+                        I’ve built and deployed AI-driven 
+                        projects across multiple domains, including 
+                        financial forecasting model, retrieval augmented 
+                        generation (RAG) applications using LlamaIndex, 
+                        and interactive websites. I’m driven by the belief 
+                        that data and code, when used thoughtfully, 
+                        can solve real-world problems, empower decision making, 
+                        and shape better digital experiences.
+                    </p>
+                </div>
+                
+                <div class="mt-8">
+                    <h3 class="text-xl font-bold mb-4 gradient-text">
+                        <i class="fas fa-share-alt mr-2"></i>Connect
+                    </h3>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/in/samuel-ofoegbu-873116182/" class="social-icon text-primary-500 text-2xl">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://leetcode.com/u/Ofoegbusam/" class="social-icon text-primary-400 text-2xl">
+                            <i class="fas fa-code"></i>
+                        </a>
+                        <a href="https://x.com/say_s1m" class="social-icon text-primary-600 text-2xl">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://github.com/Samm-OB" class="social-icon text-gray-400 text-2xl">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hologram-effect rounded-2xl p-6 neon-border square animate-slideIn" style="animation-delay: 0.2s;">
+                <h3 class="text-xl font-bold mb-4 gradient-text">
+                    <i class="fas fa-user-check mr-2"></i>Current Status
+                </h3>
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                    <p>Available for new projects</p>
+                </div>
+                <div class="bg-gray-700 rounded-full h-2">
+                    <div class="bg-gradient-to-r from-primary-700 to-primary-500 h-2 rounded-full w-3/4"></div>
+                </div>
+                <p class="text-xs text-gray-400 mt-2">Capacity: 75% available</p>
+                
+                <div class="mt-4 flex flex-col space-y-2">
+                    <a href="https://samm-ob.github.io/Portfolio.github.io/Samuel_Ofoegbu_CV.pdf" class="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors text-center">
+                        <i class="fas fa-download mr-2"></i>Download CV
+                    </a>
+                </div>
+            </div>
+        </div>
 
-    <div class="subtitle-slider swiper-container">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"><p>Data Scientist</p></div>
-        <div class="swiper-slide"><p>AI/ML Engineer</p></div>
-        <div class="swiper-slide"><p>SOC Analyst</p></div>
-      </div>
+        <!-- Section 2: Stats & Skills -->
+        <div class="horizontal-section">
+            <div class="hologram-effect rounded-2xl p-6 neon-border square mb-4 animate-slideIn" style="animation-delay: 0.4s;">
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="flex items-center space-x-3">
+                        <i class="fab fa-github text-primary-500 text-xl"></i>
+                        <div>
+                            <p class="text-gray-400">GitHub</p>
+                            <p class="text-2xl font-bold gradient-text">≥ 20</p>
+                            <p class="text-sm text-gray-400">projects</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-code text-primary-400 text-xl"></i>
+                        <div>
+                            <p class="text-gray-400">LeetCode</p>
+                            <p class="text-lg">≥ 60 problems solved</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-graduation-cap text-primary-600 text-xl"></i>
+                        <div>
+                            <p class="text-gray-400">Education</p>
+                            <p class="text-lg">BSc Mathematics, MSc Financial Engineering</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hologram-effect rounded-2xl p-6 neon-border tall-rectangle animate-slideIn" style="animation-delay: 0.6s;">
+                <h3 class="text-xl font-bold mb-4 gradient-text">
+                    <i class="fas fa-cogs mr-2"></i>Expertise
+                </h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <h4 class="font-bold text-primary-400 mb-2">Programming</h4>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <i class="fab fa-python text-primary-500 mr-2"></i>
+                                <span>Python</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fab fa-js-square text-primary-500 mr-2"></i>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-database text-primary-500 mr-2"></i>
+                                <span>SQL</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fa-brands fa-react text-primary-500 mr-2"></i>
+                                <span>React</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fa-brands fa-node-js text-primary-500 mr-2"></i>
+                                <span>Node.js</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-code text-primary-500 mr-2"></i>
+                                <span>C++</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold text-primary-400 mb-2">Tools</h4>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <i class="fab fa-git-alt text-primary-500 mr-2"></i>
+                                <span>Git</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-code text-primary-500 mr-2"></i>
+                                <span>VS Code</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-laptop-code text-primary-500 mr-2"></i>
+                                <span>Jupyter</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fa-solid fa-globe text-primary-500 mr-2"></i>
+                                <span>Vercel</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-code text-primary-500 mr-2"></i>
+                                <span>ngrok</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fa-brands fa-aws text-primary-500 mr-2"></i>
+                                <span>AWS</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold text-primary-400 mb-2">AI/ML</h4>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <i class="fas fa-robot text-primary-500 mr-2"></i>
+                                <span>LlamaIndex</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-stream text-primary-500 mr-2"></i>
+                                <span>Streamlit</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-project-diagram text-primary-500 mr-2"></i>
+                                <span>Gradio</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold text-primary-400 mb-2">Data Science</h4>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <i class="fas fa-chart-line text-primary-500 mr-2"></i>
+                                <span>Pandas</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-calculator text-primary-500 mr-2"></i>
+                                <span>NumPy</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-brain text-primary-500 mr-2"></i>
+                                <span>Scikit-learn</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Projects -->
+        <div class="horizontal-section">
+            <div class="hologram-effect rounded-2xl p-6 neon-border tall-rectangle mb-4 animate-slideIn" style="animation-delay: 0.8s;">
+                <h3 class="text-xl font-bold mb-4 gradient-text">
+                    <i class="fas fa-project-diagram mr-2"></i>Projects
+                </h3>
+                <div class="space-y-6">
+                    <div class="border-l-4 border-primary-500 pl-4">
+                        <h4 class="font-bold">
+                            <a href="https://github.com/Samm-OB/MCP-Claude-Desktop-Project-Demo" class="hover:text-primary-400 transition-colors">
+                                <i class="fas fa-cube mr-2"></i>Model Context Protocol (MCP) Project
+                            </a>
+                        </h4>
+                        <p class="text-sm text-gray-400 mt-1">
+                            Demonstrates use of the Model Context Protocol server with FastMCP framework to expose programmable tools for Claude AI.
+                        </p>
+                    </div>
+                    
+                    <div class="border-l-4 border-primary-400 pl-4">
+                        <h4 class="font-bold">
+                            <a href="https://github.com/Samm-OB/Password-strength-checker" class="hover:text-primary-400 transition-colors">
+                                <i class="fas fa-lock mr-2"></i>Password Strength Checker
+                            </a>
+                        </h4>
+                        <p class="text-sm text-gray-400 mt-1">
+                            A Streamlit app that validates password strength using regex and entropy scoring; includes a random password generator.
+                        </p>
+                    </div>
+                    
+                    <div class="border-l-4 border-primary-600 pl-4">
+                        <h4 class="font-bold">
+                            <a href="https://github.com/Samm-OB/Fake-News-Project" class="hover:text-primary-400 transition-colors">
+                                <i class="fas fa-newspaper mr-2"></i>Fake News Detector
+                            </a>
+                        </h4>
+                        <p class="text-sm text-gray-400 mt-1">
+                            A machine learning classifier that uses NLP to detect fake news articles. Helps combat misinformation.
+                        </p>
+                    </div>
+
+                    <div class="border-l-4 border-primary-600 pl-4">
+                        <h4 class="font-bold">
+                            <a href="https://punpoets.vercel.app/" class="hover:text-primary-400 transition-colors">
+                                <i class="fa-solid fa-laptop-code mr-2"></i>Punpoets Media
+                            </a>
+                        </h4>
+                        <p class="text-sm text-gray-400 mt-1">
+                            PunPoets Media is a digital platform that connects 
+                            poets, performers, and audiences through creative 
+                            expression and interactive storytelling. It allows 
+                            poets to showcase their portfolios, receive bookings, 
+                            and engage with audiences in a vibrant online space.
+                            The platform was built using React and TailwindCSS for
+                             the frontend, Node.js and Express for the backend, and 
+                             PostgreSQL for data management. It also integrates AWS S3 and cloudinary 
+                             for media storage, ensuring a seamless and professional user experience.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="mt-8">
+                    <h3 class="text-xl font-bold mb-4 gradient-text">
+                        <i class="fas fa-graduation-cap mr-2"></i>Education
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-bold">BSc Mathematics</h4>
+                            <p class="text-sm text-gray-400">University of Lagos (Unilag)</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">MSc Financial Engineering</h4>
+                            <p class="text-sm text-gray-400">WorldQuant University</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hologram-effect rounded-2xl p-6 neon-border square animate-slideIn" style="animation-delay: 1s;">
+                <h3 class="text-xl font-bold mb-4 gradient-text">
+                    <i class="fas fa-robot mr-2"></i>AI Assistant
+                </h3>
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="font-bold">RAG Portfolio Assistant</h4>
+                        <p class="text-sm text-gray-400 mt-1">
+                            A Retrieval-Augmented Generation (RAG) agent that answers questions with memory and document-grounded responses based on my Portfolio.
+                        </p>
+                    </div>
+                    <button class="w-full mt-4 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors" onclick="showChatbot()">
+                        <i class="fas fa-comments mr-2"></i>Chat with Assistant
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Contact & Additional Info -->
+        <div class="horizontal-section">
+            <div class="hologram-effect rounded-2xl p-6 neon-border tall-rectangle animate-slideIn" style="animation-delay: 1.2s;">
+                <h3 class="text-xl font-bold mb-4 gradient-text">
+                    <i class="fas fa-envelope mr-2"></i>Contact
+                </h3>
+                <div class="space-y-4">
+                    <div class="flex items-start space-x-3">
+                        <i class="fas fa-envelope text-primary-500 mt-1"></i>
+                        <div>
+                            <p class="font-medium">smlofoegbu@gmail.com</p>
+                            <p class="text-sm text-gray-400">Primary email</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-3">
+                        <i class="fab fa-linkedin text-primary-500 mt-1"></i>
+                        <div>
+                            <p class="font-medium">LinkedIn</p>
+                            <p class="text-sm text-gray-400">Samuel Ofoegbu</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-3">
+                        <i class="fab fa-github text-primary-500 mt-1"></i>
+                        <div>
+                            <p class="font-medium">GitHub</p>
+                            <p class="text-sm text-gray-400">Samm-OB</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8">
+                    <h3 class="text-xl font-bold mb-4 gradient-text">
+                        <i class="fas fa-shield-alt mr-2"></i>Cybersecurity
+                    </h3>
+                    <div class="space-y-2">
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-primary-500 mr-2"></i>
+                            <span>Password validation</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-primary-500 mr-2"></i>
+                            <span>Threat modeling (basic)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8">
+                    <h3 class="text-xl font-bold mb-4 gradient-text">
+                        <i class="fas fa-tools mr-2"></i>Additional Tools
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-primary-500/10 text-primary-500 rounded-full text-sm">Power BI</span>
+                        <span class="px-3 py-1 bg-primary-500/10 text-primary-500 rounded-full text-sm">Google Analytics</span>
+                        <span class="px-3 py-1 bg-primary-500/10 text-primary-500 rounded-full text-sm">Salesforce</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-    </nav>
+    <!-- Chatbot Modal -->
+    <div id="chatbotModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="hideChatbot()">&times;</span>
+            <h3 class="text-xl font-bold mb-4 gradient-text">
+                <i class="fas fa-robot mr-2"></i>Portfolio Assistant
+            </h3>
+            <p class="text-sm text-gray-400 mb-4">Ask me anything about Samuel's skills, projects, or experience</p>
+            
+            <div class="chat-container mb-4 p-4 border border-primary-500/20 rounded-lg h-64 overflow-y-auto" id="chatMessages">
+                <div class="bot-message rounded-lg p-3 mb-3 message">
+                    <strong>AI Assistant:</strong> Hello! I'm here to help you learn more about Samuel Ofoegbu's portfolio, skills, and experience. What would you like to know?
+                </div>
+            </div>
 
-    <div class="social">
-      <a href="https://www.linkedin.com/in/samuel-ofoegbu-873116182/" target="blank" rel="noopener noreferrer" aria-label="LinkedIn">
-        <span class="fab fa-linkedin"></span>
-      </a>
-      <a href="https://leetcode.com/u/Ofoegbusam/" target="blank" rel="noopener noreferrer" aria-label="Leetcode">
-        <span class="fas fa-code"></span>
-      </a>
-      <a href="https://x.com/say_s1m" target="blank" rel="noopener noreferrer" aria-label="Twitter">
-        <span class="fab fa-twitter"></span>
-      </a>
-      <a href="https://github.com/Samm-OB" target="blank" rel="noopener noreferrer" aria-label="GitHub">
-        <span class="fab fa-github"></span>
-      </a>
+            <div class="flex gap-2 mb-4">
+                <input type="text" id="userInput" placeholder="Ask about skills, projects, experience..." 
+                       class="flex-1 p-3 border border-primary-500/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-transparent">
+                <button onclick="sendMessage()" class="bg-primary-600 text-white p-3 rounded-lg hover:bg-primary-700 transition-colors">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+
+            <!-- Quick Questions -->
+            <div class="grid grid-cols-2 gap-2">
+                <button onclick="askQuickQuestion('What are Samuel\'s main skills?')" class="text-left p-2 bg-primary-500/10 rounded-lg hover:bg-primary-500/20 text-sm transition-colors">
+                    🛠️ Main skills?
+                </button>
+                <button onclick="askQuickQuestion('Tell me about Samuel\'s projects')" class="text-left p-2 bg-primary-500/10 rounded-lg hover:bg-primary-500/20 text-sm transition-colors">
+                    📂 Projects overview
+                </button>
+                <button onclick="askQuickQuestion('What is Samuel\'s educational background?')" class="text-left p-2 bg-primary-500/10 rounded-lg hover:bg-primary-500/20 text-sm transition-colors">
+                    🎓 Education
+                </button>
+                <button onclick="askQuickQuestion('How can I contact Samuel?')" class="text-left p-2 bg-primary-500/10 rounded-lg hover:bg-primary-500/20 text-sm transition-colors">
+                    📞 Contact info
+                </button>
+            </div>
+        </div>
     </div>
 
-    <div class="lnks">
-      <a href="https://samm-ob.github.io/Portfolio.github.io/Samuel_Ofoegbu_CV.pdf" class="lnk" target="blank" rel="noopener noreferrer">
-        <span class="text">Download CV</span>
-      </a>
-      <a href="#contact" class="lnk">
-        <span class="text">Contact Me</span>
-      </a>
-    </div>
-  </header>
+    <script>
+        // Portfolio knowledge base
+        const portfolioData = {
+            skills: [
+                "Python programming", "JavaScript", "SQL databases", "Pandas for data analysis", 
+                "NumPy for numerical computing", "Scikit-learn for machine learning", 
+                "LlamaIndex for RAG applications", "Streamlit for web apps", "Gradio for UI",
+                "Git version control", "VS Code", "Jupyter notebooks", "Power BI", 
+                "Google Analytics", "Salesforce", "Cybersecurity basics"
+            ],
+            projects: [
+                {
+                    name: "Model Context Protocol (MCP) Project",
+                    description: "Demonstrates use of the Model Context Protocol server with FastMCP framework to expose programmable tools for Claude AI.",
+                    link: "https://github.com/Samm-OB/MCP-Claude-Desktop-Project-Demo"
+                },
+                {
+                    name: "Password Strength Checker",
+                    description: "A Streamlit app that validates password strength using regex and entropy scoring; includes a random password generator.",
+                    link: "https://github.com/Samm-OB/Password-strength-checker"
+                },
+                {
+                    name: "Fake News Detector",
+                    description: "A machine learning classifier that uses NLP to detect fake news articles. Helps combat misinformation.",
+                    link: "https://github.com/Samm-OB/Fake-News-Project"
+                }
+            ],
+            education: [
+                "BSc Mathematics from University of Lagos (Unilag)",
+                "MSc Financial Engineering from WorldQuant University"
+            ],
+            contact: {
+                email: "smlofoegbu@gmail.com",
+                linkedin: "https://www.linkedin.com/in/samuel-ofoegbu-873116182/",
+                github: "https://github.com/Samm-OB",
+                leetcode: "https://leetcode.com/u/Ofoegbusam/",
+                twitter: "https://x.com/say_s1m"
+            },
+            status: "Available for new projects with 75% capacity available"
+        };
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I'm a final-year Pure Mathematics student with strong interests in Data Science, AI/ML, and Cybersecurity.
-      I've built projects across domains—from fraud detection and password checkers to RAG applications using LlamaIndex.
-      I'm passionate about solving real-world problems with data and code.
-    </p>
-  </section>
+        // Modal functions
+        function showChatbot() {
+            document.getElementById('chatbotModal').style.display = 'block';
+        }
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects-grid">
-      <div class="project">
-        <h3>
-          <a href="https://github.com/Samm-OB/MCP-Claude-Desktop-Project-Demo" target="_blank" rel="noopener noreferrer">
-            📦 Model Context Protocol (MCP) Project with Claude Desktop
-          </a>
-        </h3>
-        <p>
-          Demonstrates use of the Model Context Protocol server with FastMCP framework to expose programmable tools
-          (calculator, note-taker, currency lookup) for Claude AI via natural language prompts.
-        </p>
-      </div>
+        function hideChatbot() {
+            document.getElementById('chatbotModal').style.display = 'none';
+        }
 
-      <div class="project">
-        <h3>
-          <a href="https://github.com/Samm-OB/Password-strength-checker" target="_blank" rel="noopener noreferrer">
-            🔐 Password Strength Checker
-          </a>
-        </h3>
-        <p>
-          A Streamlit app that validates password strength using regex and entropy scoring; includes a random password generator.
-        </p>
-      </div>
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('chatbotModal');
+            if (event.target === modal) {
+                hideChatbot();
+            }
+        }
 
-      <div class="project">
-        <h3>
-          <a href="https://github.com/Samm-OB/Fake-News-Project" target="_blank" rel="noopener noreferrer">
-            📰 Fake News Detector
-          </a>
-        </h3>
-        <p>
-          A machine learning classifier that uses NLP to detect fake news articles. Helps combat misinformation through automated text evaluation.
-        </p>
-      </div>
-    </div>
-  </section>
+        // Simple RAG implementation
+        function findRelevantInfo(question) {
+            const lowerQuestion = question.toLowerCase();
+            let relevantInfo = [];
+            
+            // Check for skill-related questions
+            if (lowerQuestion.includes('skill') || lowerQuestion.includes('expertise') || lowerQuestion.includes('what can')) {
+                relevantInfo.push("Samuel's skills include: " + portfolioData.skills.slice(0, 8).join(', '));
+            }
+            
+            // Check for project-related questions
+            if (lowerQuestion.includes('project') || lowerQuestion.includes('work') || lowerQuestion.includes('build')) {
+                portfolioData.projects.forEach(project => {
+                    relevantInfo.push(`${project.name}: ${project.description}`);
+                });
+            }
+            
+            // Check for education-related questions
+            if (lowerQuestion.includes('education') || lowerQuestion.includes('study') || lowerQuestion.includes('background')) {
+                relevantInfo.push("Samuel's education: " + portfolioData.education.join(', '));
+            }
+            
+            // Check for contact-related questions
+            if (lowerQuestion.includes('contact') || lowerQuestion.includes('email') || lowerQuestion.includes('reach')) {
+                relevantInfo.push(`You can contact Samuel via email: ${portfolioData.contact.email} or LinkedIn: ${portfolioData.contact.linkedin}`);
+            }
+            
+            // Check for availability
+            if (lowerQuestion.includes('available') || lowerQuestion.includes('hire') || lowerQuestion.includes('freelance')) {
+                relevantInfo.push(portfolioData.status);
+            }
+            
+            // Default response if no specific info found
+            if (relevantInfo.length === 0) {
+                relevantInfo.push("Samuel is a data scientist and AI/ML engineer with expertise in Python, data analysis, and machine learning. He has a BSc in Mathematics from Unilag and an MSc in Financial Engineering from WorldQuant University.");
+            }
+            
+            return relevantInfo.join(' ');
+        }
 
-<div class="skills-grid">
-  <!-- Programming -->
-  <div class="skill-category">
-    <h3>Programming</h3>
-    <div class="skill-item">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
-      <span>Python</span>
-    </div>
-    <div class="skill-item">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" style="width: 20px;">
-      <span>C++</span>
-    </div>
-    <div class="skill-item">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" style="width: 20px;">
-  <span>JavaScript</span>
-</div>
-    <div class="skill-item">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL">
-      <span>MySQL</span>
-    </div>
-    <div class="skill-item">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" style="width: 20px;">
-      <span>PostgreSQL</span>
-    </div>
-  </div>
+        // Chat functions
+        function sendMessage() {
+            const userInput = document.getElementById('userInput');
+            const message = userInput.value.trim();
+            
+            if (message) {
+                addMessage(message, 'user');
+                userInput.value = '';
+                
+                // Simulate AI thinking
+                setTimeout(() => {
+                    const response = generateResponse(message);
+                    addMessage(response, 'bot');
+                }, 1000);
+            }
+        }
 
-  <!-- Data -->
-  <div class="skill-category">
-    <h3>Data</h3>
-    <div class="skill-item">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas">
-      <span>Pandas</span>
-    </div>
-    <div class="skill-item">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy">
-      <span>NumPy</span>
-    </div>
-    <div class="skill-item">
-      <img src="https://seeklogo.com/images/P/power-bi-logo-F3B4C3F857-seeklogo.com.png" alt="Power BI" style="width: 20px;">
-      <span>Power BI</span>
-    </div>
-    <div class="skill-item">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Google_Analytics_Logo.png" alt="Google Analytics" style="width: 20px;">
-      <span>Google Analytics</span>
-    </div>
-    <div class="skill-item">
-      <img src="https://cdn.worldvectorlogo.com/logos/salesforce-2.svg" alt="Salesforce" style="width: 20px;">
-      <span>Salesforce</span>
-    </div>
-  </div>
+        function askQuickQuestion(question) {
+            document.getElementById('userInput').value = question;
+            sendMessage();
+        }
 
-  <!-- ML / AI -->
-  <div class="skill-category">
-    <h3>ML / AI</h3>
-    <div class="skill-item">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="Scikit-learn">
-      <span>Scikit-learn</span>
-    </div>
-    <div class="skill-item">
-      <img src="https://streamlit.io/images/brand/streamlit-logo-primary-colormark-darktext.svg" alt="Streamlit" style="width: 60px;">
-      <span>Streamlit</span>
-    </div>
-    <div class="skill-item">
-      <img src="https://gradio.app/assets/img/logo.png" alt="Gradio" style="width: 60px;">
-      <span>Gradio</span>
-    </div>
-    <div class="skill-item">
-      <img src="https://avatars.githubusercontent.com/u/127567234?s=200&v=4" alt="LlamaIndex" style="width: 22px;">
-      <span>LlamaIndex</span>
-    </div>
-  </div>
+        function generateResponse(question) {
+            const relevantInfo = findRelevantInfo(question);
+            
+            // Simple response templates based on question type
+            const lowerQuestion = question.toLowerCase();
+            
+            if (lowerQuestion.includes('hello') || lowerQuestion.includes('hi') || lowerQuestion.includes('hey')) {
+                return "Hello! I'm Samuel's portfolio assistant. How can I help you learn more about his skills and experience?";
+            }
+            
+            if (lowerQuestion.includes('thank')) {
+                return "You're welcome! Is there anything else you'd like to know about Samuel's portfolio?";
+            }
+            
+            if (lowerQuestion.includes('who are you')) {
+                return "I'm an AI assistant that can answer questions about Samuel Ofoegbu's portfolio, skills, projects, and experience.";
+            }
+            
+            return `Based on Samuel's portfolio: ${relevantInfo}`;
+        }
 
-  <!-- Cybersecurity -->
-  <div class="skill-category">
-    <h3>Cybersecurity</h3>
-    <div class="skill-item">
-      <span>Password validation</span>
-    </div>
-    <div class="skill-item">
-      <span>Threat modeling (basic)</span>
-    </div>
-  </div>
+        function addMessage(text, sender) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `${sender}-message rounded-lg p-3 mb-3 message`;
+            messageDiv.innerHTML = `<strong>${sender === 'user' ? 'You' : 'AI Assistant'}:</strong> ${text}`;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
 
-  <!-- Tools -->
-  <div class="skill-category">
-    <h3>Tools</h3>
-    <div class="skill-item">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
-      <span>Git</span>
-    </div>
-    <div class="skill-item">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code">
-      <span>VS Code</span>
-    </div>
-    <div class="skill-item">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" alt="Jupyter">
-      <span>Jupyter</span>
-    </div>
-    <div class="skill-item">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
-      <span>GitHub</span>
-    </div>
-  </div>
-</div>
-</section>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const body = document.body;
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            
+            if (body.classList.contains('light-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
 
-<section id="assistant">
-  <h2>AI Assistant (RAG App)</h2>
-  <div class="card">
-    <h3>RAG Portfolio Assistant</h3>
-    <p>A Retrieval-Augmented Generation (RAG) agent that answers questions with memory and document-grounded responses based on my Portfolio. 
-      Built with LlamaIndex, OpenAI tools, and streaming chat features.</p>
-    <p><a onclick="showComingSoon()">Try the Assistant →</a></p>
-  </div>
-</section>
+        // Allow sending message with Enter key
+        document.getElementById('userInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
 
-
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: smlofoegbu@gmail.com</p>
-  <p>GitHub: <a href="https://github.com/Samm-OB" target="_blank">My Github</a></p>
-  <p>LinkedIn: <a href="https://www.linkedin.com/in/samuel-ofoegbu-873116182/" target="_blank">My LinkedIn Profile</a></p>
-</section>
-
-<!-- Coming Soon Page -->
-<div id="comingSoonPage">
-  <div>🚧 Coming Soon 🚧</div>
-  <button onclick="hideComingSoon()">Back to Portfolio</button>
-</div>
-
-<!-- Footer -->
-<footer>
-  <p>&copy; 2025 Samuel Ofoegbu. All rights reserved.</p>
-
-  <!-- Social Media Links -->
-  <div class="social">
-    <a target="blank" href="https://www.linkedin.com/in/samuel-ofoegbu-873116182/" aria-label="LinkedIn">
-      <span class="fab fa-linkedin"></span>
-    </a>
-    <a target="blank" href="https://leetcode.com/u/Ofoegbusam/" aria-label="Leetcode">
-      <span class="fas fa-code"></span>
-    </a>
-    <a target="blank" href="https://x.com/say_s1m" aria-label="Twitter">
-      <span class="fab fa-twitter"></span>
-    </a>
-    <a target="blank" href="https://github.com/Samm-OB" aria-label="GitHub">
-      <span class="fab fa-github"></span>
-    </a>
-  </div>
-
-  <!-- Back to Top Button -->
-  <button class="back-to-top">↑</button>
-</footer>
-
-<!-- JS Script -->
-<script src="script.js"></script>
-
-
+        // Add interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.hologram-effect');
+            
+            elements.forEach(el => {
+                el.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = '0 0 20px rgba(30, 64, 175, 0.4)';
+                });
+                
+                el.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 0 10px rgba(30, 64, 175, 0.2)';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
-
